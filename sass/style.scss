@@ -1,0 +1,600 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+
+*{
+    padding: 0; margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: none; outline: none;
+    transition: all .2s linear;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+
+    &::-webkit-scrollbar{
+        width: .5rem;
+    }
+    &::-webkit-scrollbar-track{
+        background: #fff;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: #e60000;
+        border-radius: 10rem;
+    }
+}
+$red:#e60000;
+$black:#222;
+$white:#fff;
+$light-color:#666;
+$light-bg:#eee;
+$border:.2rem solid $black;
+$box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+
+
+// Utility Classes
+section{
+    padding: 5rem 9%;
+}
+.heading{
+    margin: 2rem 0;
+    font-size: 3.5rem;
+    text-align: center;
+}
+@mixin grid($val, $gap){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: $gap;
+}
+@mixin para($lh) {
+    font-size: 1.5rem;
+    color: $light-color;
+    line-height: $lh;
+}
+@mixin flex{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+@mixin btn{
+    font-size: 1.7rem;
+    padding: .8rem 1.8rem;
+    background: $red;
+    color: $white;
+    cursor: pointer;
+    margin: 1rem 0;
+
+    &:hover{
+        letter-spacing: .2rem;
+    }
+}
+
+
+// Header Section Starts
+header.head{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.5rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $white;
+    box-shadow: $box-shadow;
+    z-index: 100;
+
+    a.logo{
+        font-size: 2.5rem;
+        color: $black;
+        font-weight: 700;
+
+        i{
+            color: $red;
+        }
+    }
+    .navbar{
+
+        a{
+            padding: 1.5rem;
+            font-size: 1.8rem;
+            color: $black;
+
+            &:hover{
+                color: $red;
+            }
+        }
+    }
+    .nav-items{
+        display: inline-flex;
+        gap: 1rem;
+
+        span{
+            background: $light-bg;
+            padding: 1rem;
+            border-radius: .4rem;
+            color: $black;
+            cursor: pointer;
+
+            &:hover{
+                background: $red;
+            }
+            &:hover i{
+                color: $white;
+                transform: rotate(360deg);
+            }
+        }
+        i{
+            font-size: 2rem;
+        }
+        span.bar{
+            display: none;
+        }
+    }
+}
+
+
+// Home Section Css
+.home{
+
+    .home-container{
+
+        .home-wrapper{
+
+            .slide{
+                .home-img{
+                    position: relative;
+
+                    img{
+                        width: 100%;
+                        height: 100vh;
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                    }
+                }
+                .home-txt{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+
+                    h4{
+                        font-size: 3rem;
+                        font-weight: 400;
+                        color: $black;
+                    }
+                    h2{
+                        font-size: 5rem;
+                        margin: .5rem 0;
+                    }
+                    button.btn{
+                        @include btn();
+                    }   
+                }
+            }
+        }
+    }
+}
+section.cards{
+    .card-container{
+        @include grid(15rem, 1.5rem);
+
+        .card{
+            cursor: pointer;
+            &:hover span{
+                color: $red;
+            }
+            img{
+                width: 100%;
+            }
+            span{
+                font-size: 2rem;
+                color: $black;
+                margin: 1rem auto;
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+// About Section CSS
+section.about{
+
+    .about-container{
+        @include flex();
+        gap: 5rem;
+
+        .about-img{
+            flex: 1 1 42rem;
+
+            img{
+                width: 100%;
+                box-shadow: 3rem 3rem 0 0rem #eee;
+            }
+        }
+        .about-txt{
+            flex: 1 1 42rem;
+
+            .content{
+                padding: 1.5rem;
+                background: $light-bg;
+
+                h3{
+                    font-size: 3rem;
+                    margin: 1rem 0;
+                }
+                p{
+                    @include para(1.5);
+                }
+                .btn{
+                    @include btn();
+                }
+            }
+            .art-container{
+                @include grid(15rem, 1rem);
+
+                .art{
+                    background: $light-bg;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    i{
+                        display: block;
+                        color: $red;
+                        font-size: 4rem;
+                        text-align: center;
+                    }
+                    span{
+                        display: block;
+                        text-align: center;
+                        font-size: 1.8rem;
+                        margin: 1rem auto;
+                        color: $light-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Shop Section CSS
+section.shop{
+    background: $light-bg;
+    .shop-container{
+        @include grid(28rem, 1.5rem);
+
+        .shop{
+            border: $border;
+            border-radius: .5rem;
+            box-shadow: $box-shadow;
+            background: $white;
+            position: relative;
+            overflow: hidden;
+
+            &:hover img{
+                transform: scale(1.2);
+            }
+            &:hover .extra{
+                left: 3%;
+            }
+
+            .shop-img{
+                overflow: hidden;
+
+                img{
+                    height: 48vh;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            .shop-txt{
+
+                span.spc{
+                    margin: .8rem 0;
+                    display: block;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    color: #000;
+                }
+                h3{
+                    text-align: center;
+                    color: $red;
+                    font-size: 2rem;
+
+                    span{
+                        color: $light-color;
+                        text-decoration: line-through;
+                        font-size: 1rem;
+                    }
+                }
+                .btn{
+                    @include btn();
+                    display: block;
+                    margin: 1rem auto;
+                    padding: .5rem 1.5rem;
+                }
+            }
+            .extra{
+                position: absolute;
+                top: 2%;
+                left: -18%;
+
+                span{
+                    display: block;
+                    padding: 1rem;
+                    margin: 1rem 0;
+                    border: $border;
+                    cursor: pointer;
+
+                    &:hover i{
+                        color: $white;
+                    }
+                    &:hover{
+                        background: $red;
+                    }
+
+                    i{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// banner Section CSS
+div.banner{
+    background: url(../images/banner-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    position: relative;
+
+    .text{
+        background: #fff;
+        position: absolute;
+        top: 23%;
+        left: 10%;
+        width: 25%;
+        padding: 1rem;
+
+        span{
+            font-size: 2rem;
+            display: block;
+            text-align: center;
+            margin: .8rem 0;
+        }
+        h2{
+            font-size: 3rem;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        p{
+            font-size: 1.5rem;
+            width: 72%;
+            color: #666;
+            line-height: 1.5;
+            text-align: center;
+            margin: 1rem auto;
+        }
+        .btn{
+            @include btn();
+            display: block;
+            margin: 1rem auto;
+        }
+    }
+}
+
+// Gallery Section CSS
+section.gallerys{
+    .gallery-container{
+        @include grid(27rem, 1.5rem);
+
+        .gallery{
+            position: relative;
+            overflow: hidden;
+
+            &:hover .gallery-txt{
+                transition: .3s linear;
+                top: 0; bottom: 0;
+                opacity: .9;
+            }
+
+            .gallery-img{
+                overflow: hidden;
+                
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                img.image{
+                    height: 39vh;
+                    width: 100%;
+                }
+            }
+            .gallery-txt{
+                position: absolute;
+                top: -30rem;
+                background: #fff;
+                padding: 5rem;
+
+                h3{
+                    font-size: 2rem;
+                    text-align: center;
+                    margin: 1rem 0;
+                }
+                p{
+                    font-size: 1.3rem;
+                    text-align: center;
+                    line-height: 1.5;
+                    color: $light-color;
+                }
+                .btn{
+                    @include btn();
+                    display: block;
+                    margin: 1rem auto;
+                }
+            }
+        }
+    }
+}
+
+// Message Section CSS
+div.message{
+    background: url(../images/message-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 90vh;
+    width: 100%;
+
+    .form{
+        background: $white;
+        position: absolute;
+        content: '';
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1.5rem;
+
+        h1{
+            text-align: center;
+            font-size: 3rem;
+            color: #000;
+            margin: 1rem 0;
+        }
+        .user,
+        .email,
+        .phone{
+            border-bottom: .1rem solid #000;
+        }
+        input{
+            padding: 1rem;
+            font-size: 1.6rem;
+        }
+        textarea{
+            resize: none;
+            padding: 1rem;
+            font-size: 1.6rem;
+        }
+        .mess{
+            border-bottom: .1rem solid #000;
+        }
+        .btn{
+            @include btn();
+            text-align: center;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+    }
+}
+
+// Blog Section CSS
+section.blogs{
+    .blog-container{
+        @include grid(27rem, 1rem);
+        .blog{
+            border: $border;
+            .blog-img{
+
+                img{
+                    width: 100%;
+                }
+            }
+            .blog-txt{
+                padding: 1rem;
+                margin: 1rem 0;
+                span{
+                    font-size: 1.4rem;
+                    i{
+                        color: $red;
+                        margin-right: .3rem;
+                    }
+                }
+                h2{
+                    font-size: 2.5rem;
+                    margin: 1rem 0;
+                }
+                p{
+                    @include para(1.5);
+                }
+                .btn{
+                    @include btn();
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+// Media Queries
+@media (max-width: 991px){
+    html{
+        font-size: 58%;
+    }
+    header{
+        padding: 2rem;
+    }
+    section{
+        padding: 2rem 3rem;
+    }
+}
+
+@media (max-width: 768px){
+    header.head .nav-items span.bar{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        border-top: $border;
+        background: #fff;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+        a{
+            display: block;
+            padding: 2rem;
+            font-size: 2.5rem;
+        }
+    }
+    .navbar.active{
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+}
+
+@media (max-width: 450px){
+    .home .home-container .home-wrapper .slide .home-img img{
+        background-position: right;
+    }
+    .home .home-container .swiper-button-next,
+    .home .home-container .swiper-button-prev{
+        display: none;
+    }
+    div.banner .text{
+        top: 32%;
+        left: 21%;
+        width: 62%;
+    }
+    .gallerys .gallery-container .gallery .gallery-img img.image{
+        height: 32vh;
+        width: 100%;
+    }
+    gallerys .gallery-container .gallery .gallery-txt{
+        padding: 10rem;
+    }
+    section.about .about-container{
+        gap: 18rem;
+    }
+}
